@@ -1,8 +1,8 @@
 CXX = c++
 
-EXECUTABLE = HashTable.cpp stl.cpp
+EXECUTABLE = Hash
 
-OBJS = HashTable.cpp hash_lab.cpp stl.cpp
+OBJS = hash_lab.o
 
 .PHONY: all clean
 
