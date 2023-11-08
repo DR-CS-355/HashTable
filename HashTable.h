@@ -35,19 +35,19 @@ private:
 };
 template <typename DataType, typename KeyType>
 HashTable<DataType, KeyType>::HashTable(int initTableSize) : tableSize(initTableSize) {
-    // Initialize the hash table with the given size
+    // Initialize the hash table
     dataTable = new LinkedList<DataType, KeyType>[tableSize];
 }
 
 template <typename DataType, typename KeyType>
 HashTable<DataType, KeyType>::HashTable(const HashTable& other) {
-    // Copy constructor - use the copyTable method
+    // Copy constructor 
     copyTable(other);
 }
 
 template <typename DataType, typename KeyType>
 HashTable<DataType, KeyType>& HashTable<DataType, KeyType>::operator=(const HashTable& other) {
-    // Overloaded assignment operator - use the copyTable method
+    // Overloaded assignment operator
     if (this != &other) {
         clear(); // Clear current data
         copyTable(other);
@@ -70,14 +70,14 @@ void HashTable<DataType, KeyType>::insert(const DataType& newDataItem, const Key
 
 template <typename DataType, typename KeyType>
 bool HashTable<DataType, KeyType>::retrieve(const KeyType& searchKey, DataType& returnItem) const {
-    // Retrieve the data item with the matching key
+    // Retrieve the data item 
     int index = DataType::hash(searchKey) % tableSize;
     return dataTable[index].retrieve(searchKey, returnItem);
 }
 
 template <typename DataType, typename KeyType>
 bool HashTable<DataType, KeyType>::remove(const KeyType& key) {
-    // Remove the data item with the specified key
+    // Remove the data item 
     int index = DataType::hash(key) % tableSize;
     return dataTable[index].remove(key);
 }
@@ -117,7 +117,7 @@ void HashTable<DataType, KeyType>::copyTable(const HashTable& source) {
     dataTable = new LinkedList<DataType, KeyType>[tableSize];
 
     for (int i = 0; i < tableSize; i++) {
-        dataTable[i] = source.dataTable[i]; // Assuming LinkedList supports assignment
+        dataTable[i] = source.dataTable[i]; 
     }
 }
 #endif // ifndef HASHTABLE_H
